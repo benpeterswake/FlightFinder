@@ -1,0 +1,75 @@
+<section id="search">
+  <div class="container">
+    <div ng-if="ctrl.loading === true" style="padding: 15% 0px 100px; text-align:center; padding-bottom:40px">
+      <h4 style="color:white; ">Searching Flights...</h4>
+      <img src="imgs/spinner.gif" width="10%">
+    </div>
+    <div class="row" style="padding: 5% 0px 100px" ng-if="ctrl.loading === false">
+      <div class="col-lg-8 mx-auto">
+        <button ng-click="ctrl.goToHome()" class="btn btn-primary active" style="float:right" type="button" name="button">Change Search</button>
+        <div style="padding-bottom:40px" ng-if="ctrl.flightdata === undefined">
+          <h2 style="color:white; text-align:center">Sorry! No flights matched your search...</h2>
+        </div>
+        <div ng-if="ctrl.flightdata != undefined">
+          <h2 style="color:white;">Your Flight Results</h2>
+          <hr>
+        </div>
+        <div class="card mb-3" style="width:100%;" ng-repeat="data in ctrl.flightdata">
+          <div class="card-body">
+            <h3 style="float:right">
+              <span class="badge badge-success">${{data.fare.total_price}}</span>
+              <p style="font-size:12px">Total Price</p>
+            </h3>
+            <p ng-if="data.itineraries[0].outbound.flights.length > 1">{{ctrl.formdata.adults}} Adult<span ng-if="ctrl.formdata.adults > 1">s</span> - Connecting Flight</p>
+            <p ng-if="data.itineraries[0].outbound.flights.length === 1">{{ctrl.formdata.adults}} Adult<span ng-if="ctrl.formdata.adults > 1">s</span> - Nonstop Flight</p>
+            <div ng-repeat="flight in data.itineraries[0].outbound.flights">
+              <h5 class="card-title">{{flight.origin.airport}} <i class="fas fa-arrow-circle-right"></i>
+                {{flight.destination.airport}} - Departs at: {{flight.departs_at}}</h5>
+            </div>
+
+            <h6 class="card-subtitle mb-2 text-muted"></h6>
+            <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+            <a href="/" ng-click="ctrl.addFlight(data)" class="btn btn-primary mt-3">Book Now!</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mx-auto">
+        <h4 style="color:white;">Filter Search</h4>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <div class="form-check">
+              <input class="form-check-input" ng-click="ctrl.includeFilter('Nonstop')" type="checkbox" value="" id="defaultCheck1">
+              <label class="form-check-label" for="defaultCheck1">
+                Nonstop
+              </label>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="defaultCheck2">
+              <label class="form-check-label" for="defaultCheck2">
+                Economy Class
+              </label>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="defaultCheck3">
+              <label class="form-check-label" for="defaultCheck3">
+                Business Class
+              </label>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="defaultCheck4">
+              <label class="form-check-label" for="defaultCheck4">
+                First Class
+              </label>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

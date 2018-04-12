@@ -1,0 +1,29 @@
+<section id="signup">
+  <div class="container">
+    <div class="col-md-4 col-sm-12 mx-auto">
+      <form ng-submit="ctrl.signup()">
+        <div class="form-group">
+          <h3>Signup</h3>
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput">First Name</label>
+          <input type="text" class="form-control" id="formGroupExampleInput" placeholder="First Name" ng-model="ctrl.signupdata.firstname" required>
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput">Last Name</label>
+          <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Last Name" ng-model="ctrl.signupdata.lastname" required>
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput">Email</label>
+          <input type="email" class="form-control" id="formGroupExampleInput3" placeholder="Email Address" ng-model="ctrl.signupdata.email" required>
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput2">Password</label>
+          <input type="password" class="form-control" id="formGroupExampleInput4" placeholder="Password" ng-model="ctrl.signupdata.password" required>
+        </div>
+        <button type="submit" class="btn btn-primary active" name="button">Sign Up!</button>
+      </form>
+        <p style="padding-top:40px; text-align:center">Already a user? <span ng-click="ctrl.goTologin()" class="goToLogin">Login</span></p>
+    </div>
+  </div>
+</section>

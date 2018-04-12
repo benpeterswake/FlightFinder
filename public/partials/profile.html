@@ -1,0 +1,36 @@
+<section id="profile">
+  <div class="container">
+      <div class="col-md-3 mx-auto" style="color:white; padding:20px; border-radius: 3%;">
+        <i class="fas fa-user-circle" style="font-size:100px"></i>
+        <h3 style="text-transform:capitalize">{{ctrl.currentUser}}</h3>
+        <p>My Flights</p>
+      </div>
+      <div class="col-md-8 mx-auto" style="background:white; color:black; padding:50px;">
+        <h3>Itineraries</h3>
+        <div ng-if="ctrl.flights" class="card mb-3" style="width:100%;" ng-repeat="data in ctrl.flights">
+          <div class="card-body">
+            <span style="float:right; color:red;">
+              <i class="fas fa-times-circle"></i>
+            </span>
+            <p ng-if="data.flight.itineraries[0].outbound.flights.length > 1"> Connecting Flight</p>
+            <p ng-if="data.flight.itineraries[0].outbound.flights.length === 1">Nonstop Flight</p>
+            <div ng-repeat="flightdata in data.flight.itineraries[0].outbound.flights">
+              <h5 class="card-title">{{flightdata.origin.airport}} <i class="fas fa-arrow-circle-right"></i>
+                {{flightdata.destination.airport}} - Departs at: {{flightdata.departs_at}}</h5>
+            </div>
+            <h3>
+              <span class="badge badge-success">${{data.flight.fare.total_price}}</span>
+              <p style="font-size:12px">Total Price</p>
+            </h3>
+            <h6 class="card-subtitle mb-2 text-muted"></h6>
+            <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+            <a href="/" ng-click="ctrl.addFlight(data)" class="btn btn-primary mt-3">Purchase Seat</a>
+          </div>
+        </div>
+        <div ng-if="ctrl.flights.length === 0 ">
+          <p style="color:#007BFF;">No flights booked or added...</p>
+          <a href="/" ng-click="ctrl.goToHome()" class="btn btn-primary">Find Flights</a>
+        </div>
+      </div>
+  </div>
+</section>

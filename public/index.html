@@ -1,0 +1,41 @@
+  <!DOCTYPE html>
+  <html lang="en" ng-app="FlightApp">
+
+    <head>
+
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="">
+      <meta name="author" content="">
+
+      <title>Flight Finder</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js" charset="utf-8"></script>
+      <script src="app.js" charset="utf-8"></script>
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+      <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-cookies.js" charset="utf-8"></script>
+
+      <!-- Bootstrap core CSS -->
+      <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+      <!-- Custom styles for this template -->
+      <link href="css/full.css" rel="stylesheet">
+
+    </head>
+
+  <body ng-controller="MainController as ctrl">
+
+  <!-- Navigation -->
+  <div ng-include="'partials/nav.html'"></div>
+
+  <!-- Dynamically Changed -->
+  <div ng-include="ctrl.includePath"></div>
+
+  <!-- Footer -->
+  <div ng-include="'partials/footer.html'"></div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

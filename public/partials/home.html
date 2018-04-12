@@ -1,0 +1,113 @@
+<header id="header" class="bg-primary text-white" style="padding: 6% 0px 100px">
+  <div class="container text-center">
+    <h1>Find the lowest prices on all your flights!</h1>
+    <p class="lead">Get the best deals and plan your trip with ease!</p>
+    <form ng-submit="ctrl.findFlight()">
+      <div class="form-row mt-5">
+        <div class="col-sm-12 col-md-6 mb-2 mb-md-0">
+          <label>ORIGIN</label>
+          <input class="form-control form-control-lg" placeholder="e.g. London"  type="text" ng-model="ctrl.formdata.origin" ng-change="ctrl.autoOrigin()" required>
+          <span ng-if="ctrl.originData" style="font-weight:bold">Please Select Airport:</span>
+          <div class="dropdownSearch" ng-if="ctrl.originData" ng-repeat="data in ctrl.originData">
+            <div class="searchData" ng-click="ctrl.setOrigin(data)">{{data.label}}</div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-6 mb-2 mb-md-0">
+          <label>DESTINATION</label>
+          <input class="form-control form-control-lg" type="text" ng-model="ctrl.formdata.destination" placeholder="e.g. Boston" ng-change="ctrl.autoDestination()" required>
+          <span ng-if="ctrl.destinationData" style="font-weight:bold">Please Select Airport:</span>
+          <div class="dropdownSearch" ng-if="ctrl.destinationData" ng-repeat="data in ctrl.destinationData">
+            <div class="searchData" ng-click="ctrl.setDestination(data)">{{data.label}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row mt-5">
+        <div class="col-sm-12 col-md-6 mb-2 mb-md-0">
+          <label>DEPARTURE DATE</label>
+          <input class="form-control form-control-lg" type="date" ng-model="ctrl.formdata.departure_date" required>
+        </div>
+        <div class="col-sm-12 col-md-3 mb-2 mb-md-0">
+          <label>TRAVELERS (Adults)</label>
+          <input class="form-control form-control-lg" type="number" ng-model="ctrl.formdata.adults" placeholder="# of Adults" required>
+        </div>
+        <div class="col-sm-12 col-md-3 mb-2 mb-md-0">
+          <label>TRAVELERS (Childern)</label>
+          <input ng-model="ctrl.formdata.childern" class="form-control form-control-lg" type="number" placeholder="# of Childern">
+        </div>
+      </div>
+      <div class="form-row mt-5">
+        <div class="col-12 col-md-12">
+          <button type="submit" class="btn btn-block btn-lg btn-primary active">Find Flights</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</header>
+
+<section id="services">
+  <div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><i class="far fa-money-bill-alt" style="font-size:80px; display: block; margin:0 auto"></i></a>
+            <div class="card-body" style="border:none">
+              <h4 class="card-title">
+                Lowest Prices!
+              </h4>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae!</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><i class="fas fa-search-plus" style="font-size:80px; display: block; margin:0 auto"></i></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                Powerful Search!
+              </h4>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae!</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><i class="fas fa-user-plus" style="font-size:80px; display: block; margin:0 auto"></i></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                Easy to use!
+              </h4>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-sm-12 mx-auto">
+        <i class="fas fa-plane" style="font-size:305px; background-color:white; box-shadow: 0px 3px 6px rgba(0,0,0,0.2); color:#007BFF; padding:30px"></i>
+      </div>
+      <div class="col-md-6 col-sm-12 mx-auto">
+        <h2>About Flight Finder</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio</p>
+        <p>velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="call-to-action">
+  <div class="container">
+    <div class="col-md-7 col-sm-12 mx-auto" ng-if="ctrl.loggedIn === false">
+      <h2>Sign Up And Start Saving On Flights!</h2>
+      <a href="#nav" ng-click="ctrl.goToSignUp()" class="btn btn-block btn-primary active">Sign Up</a>
+    </div>
+    <div class="col-md-7 col-sm-12 mx-auto" ng-if="ctrl.loggedIn === true">
+      <h2>Start Saving On Flights!</h2>
+      <a href="/#header" class="btn btn-block btn-primary active">Search Now</a>
+    </div>
+  </div>
+</section>
