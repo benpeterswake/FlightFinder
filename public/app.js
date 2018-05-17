@@ -35,7 +35,7 @@ app.controller('MainController', ['$cookies', '$scope', '$http', function($cooki
   this.signup = () => {
     $http({
       method:'POST',
-      url: 'http://localhost:3000/signup',
+      url: '/signup',
       data: {
         firstname: this.signupdata.firstname,
         lastname: this.signupdata.lastname,
@@ -55,7 +55,7 @@ app.controller('MainController', ['$cookies', '$scope', '$http', function($cooki
   this.login = () => {
     $http({
       method:'POST',
-      url: 'http://localhost:3000/login',
+      url: '/login',
       data: {
         email: this.logindata.email,
         password: this.logindata.password
@@ -91,7 +91,7 @@ this.logout = () => {
     this.loading = true;
     $http({
       method: 'POST',
-      url: 'http://localhost:3000/data',
+      url: '/data',
       data: {
         origin: this.formdata.origin,
         destination: this.formdata.destination,
@@ -110,7 +110,7 @@ this.logout = () => {
   this.autoOrigin = function(){
     $http({
       method: 'POST',
-      url: 'http://localhost:3000/autocomplete',
+      url: '/autocomplete',
       data: {
         term: this.formdata.origin
       }
@@ -123,7 +123,7 @@ this.logout = () => {
   this.autoDestination = function(){
     $http({
       method: 'POST',
-      url: 'http://localhost:3000/autocomplete',
+      url: '/autocomplete',
       data: {
         term: this.formdata.destination
       }
@@ -162,7 +162,7 @@ this.logout = () => {
     if($cookies.get('user_id')){
       $http({
         method: 'POST',
-        url: 'http://localhost:3000/booking',
+        url: '/booking',
         data: {
           user_id: $cookies.get('user_id'),
           flight: flight
@@ -182,7 +182,7 @@ this.logout = () => {
       console.log($cookies.get('user_id'));
       $http({
         method: 'GET',
-        url: 'http://localhost:3000/booking',
+        url: '/booking',
         params: {
           user_id: $cookies.get('user_id')
         }
