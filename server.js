@@ -29,7 +29,7 @@ app.post('/data', (request, result) => {
   let childern = request.body.childern;
   const url =
     'https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey='
-    + 'SmsjFMVa8EG6xWMi5NGxI9dU0M6UK1zA'
+    + 'k2T3GZdaayI2VO5RRY276f0ibNvsGTcI'
     + '&' + 'origin=' + origin
     + '&' + 'destination=' + destination
     + '&' + 'departure_date=' + departure_date
@@ -46,7 +46,7 @@ app.post('/data', (request, result) => {
     res.on("end", () => {
       body = JSON.parse(body);
       result.json(body)
-      // console.log(body);
+      console.log(body);
     });
   });
 });
@@ -55,7 +55,7 @@ app.post('/autocomplete', (request, result) => {
   let term = request.body.term;
   const url =
     'https://api.sandbox.amadeus.com/v1.2/airports/autocomplete?apikey='
-    + 'SmsjFMVa8EG6xWMi5NGxI9dU0M6UK1zA'
+    + 'k2T3GZdaayI2VO5RRY276f0ibNvsGTcI'
     + '&' + 'term=' + term
   https.get(url, res => {
     res.setEncoding("utf8");
@@ -66,7 +66,7 @@ app.post('/autocomplete', (request, result) => {
     res.on("end", () => {
       body = JSON.parse(body);
       result.json(body)
-      // console.log(body);
+      console.log(body);
     });
   });
 });
