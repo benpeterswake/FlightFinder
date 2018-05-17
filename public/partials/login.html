@@ -5,6 +5,9 @@
         Account successful created!
       </div>
       <form ng-submit="ctrl.login()">
+        <div ng-if="ctrl.loginError" class="alert alert-danger" role="alert">
+          Invalid username or password
+        </div>
         <div class="form-group">
           <h3>Login</h3>
         </div>
