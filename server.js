@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
 const https = require('https');
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 //Middleware
 app.use(cors());
