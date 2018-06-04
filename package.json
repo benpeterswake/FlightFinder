@@ -1,10 +1,11 @@
 {
   "name": "flightapp",
   "version": "1.0.0",
-  "description": "",
+  "description": "Mean Stack App using Amadeus flight api to find lowest prices on airplane flights",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -13,5 +14,14 @@
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "mongoose": "^5.0.14"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benpeterswake/FlightFinder.git"
+  },
+  "bugs": {
+    "url": "https://github.com/benpeterswake/FlightFinder/issues"
+  },
+  "homepage": "https://github.com/benpeterswake/FlightFinder#readme"
 }

@@ -5,6 +5,7 @@ app.controller('MainController', ['$cookies', '$scope', '$http', function($cooki
 
   //Global Variables
   this.loading = null;
+  this.loginError = null;
   this.userSuccefullyCreated = null;
 
   //Form data
@@ -46,6 +47,7 @@ app.controller('MainController', ['$cookies', '$scope', '$http', function($cooki
     }).then(response => {
       if(response.data.message === "user created"){
         this.signupdata = {};
+        this.loginError = null;
         this.userSuccefullyCreated = true;
         this.changeInclude('login');
       }
@@ -54,6 +56,8 @@ app.controller('MainController', ['$cookies', '$scope', '$http', function($cooki
 
   //Login
   this.login = () => {
+    this.userSuccefullyCreated = null;
+    this.loginError = null;
     $http({
       method:'POST',
       url: '/login',
@@ -62,7 +66,6 @@ app.controller('MainController', ['$cookies', '$scope', '$http', function($cooki
         password: this.logindata.password
       }
     }).then(response => {
-      console.log(response);
       this.currentUser = response.data.message.firstname + ' ' + response.data.message.lastname;
       this.currentUserId = response.data.message._id;
       $cookies.put('user_id', this.currentUserId);
@@ -71,7 +74,9 @@ app.controller('MainController', ['$cookies', '$scope', '$http', function($cooki
       this.logindata = {};
       this.changeInclude('home');
     }, err => {
-      console.log(err);
+      if(err.data.status === 401){
+        this.loginError = true
+      }
     });
   }
 
