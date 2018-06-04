@@ -14,6 +14,7 @@ app.controller('MainController', ['$cookies', '$scope', '$http', function($cooki
 
   //Navigaction
   this.includePath = 'partials/home.html';
+  
   this.changeInclude = (path) => {
     this.includePath = 'partials/' + path + '.html';
   }
